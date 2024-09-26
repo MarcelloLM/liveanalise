@@ -18,14 +18,23 @@ from PIL                 import Image
 
 # Verificar e baixar pacotes necessários
 def verificar_downloads_nltk():
-    pacotes = ['punkt', 'stopwords']
-    for pacote in pacotes:
+    pacotes_tokenizers = ['punkt']
+    pacotes_corpora = ['stopwords']
+    
+    for pacote in pacotes_tokenizers:
         try:
             nltk.data.find(f'tokenizers/{pacote}')
         except LookupError:
             nltk.download(pacote)
 
+    for pacote in pacotes_corpora:
+        try:
+            nltk.data.find(f'corpora/{pacote}')
+        except LookupError:
+            nltk.download(pacote)
+
 verificar_downloads_nltk()
+
 
 # Carregar dados
 caminho_arquivo = r"https://raw.githubusercontent.com/MarcelloLM/liveanalise/refs/heads/master/bases/Conversas.csv"
