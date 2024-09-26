@@ -28,7 +28,7 @@ def verificar_downloads_nltk():
 verificar_downloads_nltk()
 
 # Carregar dados
-caminho_arquivo = r"C:\Users\46241887807\Desktop\Py\CategorizacaoMensagens\bases\Conversas.csv"
+caminho_arquivo = r"https://raw.githubusercontent.com/MarcelloLM/liveanalise/refs/heads/master/bases/Conversas.csv"
 try:
     Conversas = pd.read_csv(caminho_arquivo)
     Conversas['startTime'] = pd.to_datetime(Conversas['startTime'])
