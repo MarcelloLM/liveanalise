@@ -35,16 +35,26 @@ def verificar_downloads_nltk():
 
 verificar_downloads_nltk()
 
+# Título da aplicação
+st.title("Análise de Conversas")
 
-# Carregar dados
-caminho_arquivo = r"https://raw.githubusercontent.com/MarcelloLM/liveanalise/refs/heads/master/bases/Conversas.csv"
-try:
-    Conversas = pd.read_csv(caminho_arquivo)
-    Conversas['startTime'] = pd.to_datetime(Conversas['startTime'])
-except FileNotFoundError:
-    st.write(f"O arquivo CSV não foi encontrado em {caminho_arquivo}. Verifique o caminho.")
-except Exception as e:
-    st.write(f"Ocorreu um erro ao carregar o arquivo CSV: {e}")
+# Instruções para o usuário
+st.write("Por favor, faça o upload de um arquivo CSV contendo as conversas para análise.")
+
+# Upload de arquivo pelo usuário
+arquivo_upload = st.file_uploader("Envie o arquivo CSV aqui", type="csv")
+
+# Verifica se o arquivo foi enviado
+if arquivo_upload is not None:
+    # Lê o arquivo CSV enviado
+    try:
+        Conversas = pd.read_csv(arquivo_upload)
+        Conversas['startTime'] = pd.to_datetime(Conversas['startTime'])
+        st.write(f"Arquivo '{arquivo_upload.name}' carregado com sucesso!")
+    except Exception as e:
+        st.write(f"Ocorreu um erro ao carregar o arquivo CSV: {e}")
+else:
+    st.write("Por favor, envie um arquivo CSV para iniciar a análise.")
 
 # Função para adicionar stopwords personalizadas
 def obter_stopwords_personalizadas():
