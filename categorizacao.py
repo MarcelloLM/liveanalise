@@ -308,7 +308,6 @@ def analisar_bigrams_para_grupo(dados_frequencia, grupo_tema):
     return frequencia_bigramas_grupo
 
 # Aplicação Streamlit
-st.title("Análise de Conversas")
 st.write("### Frequência de Bigrams por Tema")
 
 # Carregar e mostrar a imagem na barra lateral
