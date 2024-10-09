@@ -16,16 +16,8 @@ import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from PIL                 import Image
 
-# Verificar e baixar pacotes necessários
-def verificar_downloads_nltk():
-    pacotes = ['punkt', 'stopwords']
-    for pacote in pacotes:
-        try:
-            nltk.data.find(f'tokenizers/{pacote}')
-        except LookupError:
-            nltk.download(pacote)
-
-verificar_downloads_nltk()
+nltk.download('punkt')
+nltk.download('stopwords')
 
 # Título da aplicação
 st.title("Análise de Conversas")
